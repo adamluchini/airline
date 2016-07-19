@@ -23,11 +23,39 @@ namespace Airline
       Assert.Equal(0, result);
     }
 
+    [Fact]
+    public void Test_Equal_ReturnsTrueForSameName()
+    {
+      City firstCity = new City("Ottowa");
+      City secondCity = new City("Ottowa");
+
+      Assert.Equal(firstCity, secondCity);
+    }
+
+    [Fact]
+    public void Test_Save_SavesCitiesToDatabase()
+    {
+      City newCity = new City("Ottowa");
+      newCity.Save();
+      Assert.Equal(1, City.GetAll().Count);
+    }
+
+    [Fact]
+    public void Test_Find_FindsCitiesInDatabase()
+    {
+      City newCity = new City("Ottowa");
+      newCity.Save();
+
+      City findCity = City.Find(newCity.GetId());
+
+      Assert.Equal(newCity, findCity);
+    }
+
+
+
     public void Dispose()
     {
       City.DeleteAll();
     }
-
-
   }
 }
