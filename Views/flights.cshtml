@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <ul>
+      @foreach(var flight in Model)
+      {
+        <li>@flight.GetName()</li>
+      }
+    </ul>
+  </body>
+
+    <a href="/cities"><button type="button" name="button">Select City</button></a>
+    <a href="/city/new"><button type="button" name="button">Add City</button></a>
+    <a href="/flight/new"><button type="button" name="button">Add Flights</button></a>
+</html>
